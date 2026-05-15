@@ -1,36 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SHASHANK // RESEARCH_LAB
+
+A high-fidelity research-lab themed portfolio for Chukkala Venkata Shashank, featuring cinematic effects and technical data visualizations.
+
+## Features
+
+- ✨ **Cinematic Design**: Atmospheric overlays with flashlight effects and smooth scrolling animations
+- 🎨 **Research Lab Theme**: Terminal-inspired aesthetic with technical typography
+- 📊 **Interactive Sections**: Hero, Foundation, Projects, Skills, Education, and Contact sections
+- 🎯 **Performance Focused**: Optimized with Vite and React for fast load times
+- 📱 **Fully Responsive**: Mobile-optimized with bottom navigation
+- 🌐 **Modern Stack**: React 19, TypeScript, Tailwind CSS, Motion/Framer
+
+## Prerequisites
+
+- Node.js (v18+)
+- npm or yarn
 
 ## Getting Started
 
-First, run the development server:
+### Install Dependencies
+
+```bash
+npm install
+```
+
+### Development
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The app will be available at `http://localhost:3000`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create an optimized production build:
 
-## Learn More
+```bash
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Preview
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Preview the production build locally:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run preview
+```
 
-## Deploy on Vercel
+## Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+.
+├── src/
+│   ├── App.tsx           # Main application component
+│   ├── main.tsx          # React DOM entry point
+│   └── index.css         # Global styles and Tailwind config
+├── index.html            # HTML entry point
+├── package.json          # Dependencies
+├── tsconfig.json         # TypeScript config
+├── vite.config.ts        # Vite config
+└── README.md             # This file
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Sections
+
+1. **DEPT_01 - Hero**: Cinematic hero section with CTA buttons
+2. **DEPT_02 - Foundation**: Personal background and research focus
+3. **DEPT_03 - Active Simulations**: Project showcase with technical details
+4. **DEPT_04 - Core Systems**: Skills and technology stack
+5. **DEPT_05 - Record Log**: Education and achievements
+6. **DEPT_06 - Uplink**: Contact form and social links
+
+## Environment Variables
+
+Create a `.env.local` file:
+
+```
+GEMINI_API_KEY=your_key_here
+```
+
+## Deployment
+
+The portfolio is ready to deploy on:
+
+- **Vercel**: `vercel deploy`
+- **Netlify**: Connect your GitHub repo
+- **GitHub Pages**: Configure in repository settings
+
+## Technologies
+
+- **React 19**: UI framework
+- **TypeScript**: Type safety
+- **Tailwind CSS**: Utility-first CSS
+- **Motion/Framer**: Animations
+- **Vite**: Build tool
+- **Lucide React**: Icons
+
+## License
+
+Apache 2.0
+
+## Author
+
+Chukkala Venkata Shashank (@Shaenpai24)

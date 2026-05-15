@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Geist", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-primary: #f5f5f5;
+  --color-accent: #FF4D00;
+  --color-secondary: #FF4D00;
+  --color-surface: #0a0a0a;
+  --color-surface-dim: #050505;
+  --color-outline: #a1a1aa;
+  
+  --spacing-gutter: 24px;
+  --spacing-section: 160px;
+}
+
+@layer base {
+  body {
+    @apply bg-black text-white antialiased selection:bg-accent/30;
+    overflow-x: hidden;
+  }
+}
+
+.flashlight-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle 250px at var(--x, 50%) var(--y, 50%),
+    transparent 0%,
+    rgba(0, 0, 0, 0.98) 100%
+  );
+  z-index: 40;
+}
+
+.revealed-content {
+  mask-image: radial-gradient(
+    circle 250px at var(--x, 50%) var(--y, 50%),
+    black 0%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle 250px at var(--x, 50%) var(--y, 50%),
+    black 0%,
+    transparent 100%
+  );
+}
+
+.dotted-leader {
+  background-image: radial-gradient(circle, #849495 1px, transparent 1px);
+  background-size: 8px 8px;
+  background-position: center;
+  background-repeat: repeat-x;
+  height: 1px;
+  flex-grow: 1;
+  margin: 0 12px;
+  opacity: 0.3;
+}
+
+.vertical-text {
+  writing-mode: vertical-rl;
+}
