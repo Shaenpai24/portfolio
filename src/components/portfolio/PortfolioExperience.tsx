@@ -199,6 +199,10 @@ export default function PortfolioExperience() {
     });
   }, []);
 
+  const heroMask = lightsOn
+    ? `radial-gradient(circle ${Math.max(18, 16 + (mouse.x / 100) * 12)}rem at ${mouse.x}% ${mouse.y}%, rgba(255,255,255,1) 0%, rgba(255,255,255,0.95) 26%, rgba(255,255,255,0.28) 54%, rgba(255,255,255,0) 76%)`
+    : `radial-gradient(circle ${Math.max(10, 9 + (mouse.x / 100) * 8)}rem at ${mouse.x}% ${mouse.y}%, rgba(255,255,255,1) 0%, rgba(255,255,255,0.78) 20%, rgba(255,255,255,0.16) 44%, rgba(255,255,255,0) 68%)`;
+
   return (
     <div ref={rootRef} className="bg-[#04070d] text-slate-200">
       <main className="relative overflow-hidden">
@@ -232,7 +236,19 @@ export default function PortfolioExperience() {
             }}
           />
 
-          <div className="parallax-layer relative z-10 mx-auto w-full max-w-7xl" data-depth="0.08">
+          <div
+            className="parallax-layer relative z-10 mx-auto w-full max-w-7xl"
+            data-depth="0.08"
+            style={{
+              WebkitMaskImage: heroMask,
+              maskImage: heroMask,
+              WebkitMaskRepeat: "no-repeat",
+              maskRepeat: "no-repeat",
+              WebkitMaskSize: "100% 100%",
+              maskSize: "100% 100%",
+              opacity: lightsOn ? 1 : 0.88,
+            }}
+          >
             <motion.p
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
