@@ -49,13 +49,13 @@ const FieldMaterial = shaderMaterial(
       float node = step(0.986, hash(grid + floor(uTime * 0.5)));
       float glow = exp(-8.5 * dot(centered - (uMouse - 0.5) * 0.28, centered - (uMouse - 0.5) * 0.28));
 
-      vec3 base = vec3(0.006, 0.012, 0.022);
+      vec3 base = vec3(0.0, 0.0, 0.0);
       vec3 cyan = vec3(0.49, 0.83, 1.0) * (flowA * 0.35 + flowB * 0.22);
       vec3 mint = vec3(0.45, 0.94, 0.80) * (node * 0.25 + glow * 0.12);
 
       vec3 color = base + cyan + mint;
       float vignette = smoothstep(0.98, 0.18, length(centered));
-      gl_FragColor = vec4(color * vignette, 0.38);
+      gl_FragColor = vec4(color * vignette, 0.45);
     }
   `,
 );
@@ -184,11 +184,11 @@ export default function HeroBackgroundScene({ lightsOn }: { lightsOn: boolean })
       gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
       className="h-full w-full"
     >
-      <color attach="background" args={[lightsOn ? "#050814" : "#020306"]} />
-      <fog attach="fog" args={[lightsOn ? "#050814" : "#020306", lightsOn ? 12 : 8, lightsOn ? 30 : 18]} />
-      <ambientLight intensity={lightsOn ? 0.28 : 0.03} />
-      <directionalLight position={[6, 7, 3]} intensity={lightsOn ? 0.85 : 0.08} color="#81dfff" />
-      <directionalLight position={[-6, -5, -3]} intensity={lightsOn ? 0.42 : 0.03} color="#71f0cc" />
+      <color attach="background" args={["#000000"]} />
+      <fog attach="fog" args={["#000000", lightsOn ? 10 : 6, lightsOn ? 26 : 14]} />
+      <ambientLight intensity={lightsOn ? 0.32 : 0.02} />
+      <directionalLight position={[6, 7, 3]} intensity={lightsOn ? 0.9 : 0.06} color="#69f3ff" />
+      <directionalLight position={[-6, -5, -3]} intensity={lightsOn ? 0.45 : 0.02} color="#6af0c0" />
       <FieldPlane lightsOn={lightsOn} />
       <NeuralField />
       <Trajectories />

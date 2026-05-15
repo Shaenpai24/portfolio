@@ -1,34 +1,38 @@
 @import "tailwindcss";
 
 :root {
-  --background: #04070d;
-  --foreground: #e6f0ff;
+  /* Design tokens from DESIGN.md */
+  --background: #000000;
+  --surface: #0d1515;
+  --on-surface: #dce4e4;
   --muted: #9fb4c8;
-  --accent-cyan: #7ad4ff;
+  --primary-cyan: #00f2ff;
+  --primary-cyan-dim: #00dbe7;
   --accent-mint: #73f0c9;
+  --glass-tint: rgba(255,255,255,0.05);
 }
 
 @theme inline {
   --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-sora);
-  --font-mono: var(--font-jetbrains-mono);
+  --color-foreground: var(--on-surface);
+  --font-sans: Geist, Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sora), sans-serif;
+  color: var(--on-surface);
+  font-family: var(--font-sans);
   text-rendering: optimizeLegibility;
 }
 
 * {
-  border-color: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.10);
 }
 
 ::selection {
-  background: rgba(122, 212, 255, 0.35);
-  color: #ffffff;
+  background: rgba(0, 242, 255, 0.20);
+  color: #000000;
 }
 
 .grain-overlay {
@@ -36,7 +40,7 @@ body {
   inset: 0;
   pointer-events: none;
   z-index: 50;
-  opacity: 0.06;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.45) 0.55px, transparent 0.55px);
+  opacity: 0.04;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.42) 0.55px, transparent 0.55px);
   background-size: 2px 2px;
 }

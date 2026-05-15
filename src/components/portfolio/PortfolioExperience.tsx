@@ -203,14 +203,14 @@ export default function PortfolioExperience() {
     : `radial-gradient(circle ${Math.max(8, 6 + (mouse.x / 100) * 6)}rem at ${mouse.x}% ${mouse.y}%, rgba(255,255,255,1) 0%, rgba(255,255,255,0.9) 16%, rgba(255,255,255,0.28) 34%, rgba(255,255,255,0) 58%)`;
 
   return (
-    <div ref={rootRef} className="bg-[#04070d] text-slate-200">
+    <div ref={rootRef} className="bg-black text-[var(--on-surface)]">
       <main className="relative overflow-hidden">
         <div
           className="pointer-events-none fixed inset-0 z-20"
           style={{
             background: lightsOn
-              ? `radial-gradient(circle ${Math.max(20, 18 + (mouse.x / 100) * 18)}rem at ${mouse.x}% ${mouse.y}%, rgba(255,248,220,0.45) 0%, rgba(255,248,220,0.24) 18%, rgba(255,248,220,0.10) 36%, rgba(255,248,220,0.03) 54%, transparent 72%)`
-              : `radial-gradient(circle ${Math.max(12, 10 + (mouse.x / 100) * 10)}rem at ${mouse.x}% ${mouse.y}%, rgba(255,248,220,0.26) 0%, rgba(255,248,220,0.14) 16%, rgba(255,248,220,0.05) 34%, transparent 60%)`,
+              ? `radial-gradient(circle ${Math.max(20, 18 + (mouse.x / 100) * 18)}rem at ${mouse.x}% ${mouse.y}%, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.55) 18%, rgba(255,255,255,0.18) 36%, rgba(255,255,255,0.04) 54%, transparent 72%)`
+              : `radial-gradient(circle ${Math.max(8, 6 + (mouse.x / 100) * 6)}rem at ${mouse.x}% ${mouse.y}%, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 36%, rgba(255,255,255,0) 38%)`,
             WebkitMaskImage: siteMask,
             maskImage: siteMask,
             WebkitMaskRepeat: "no-repeat",
@@ -218,7 +218,7 @@ export default function PortfolioExperience() {
             WebkitMaskSize: "100% 100%",
             maskSize: "100% 100%",
             mixBlendMode: "screen",
-            opacity: lightsOn ? 0.78 : 0.92,
+            opacity: lightsOn ? 0.92 : 1,
           }}
         />
 
@@ -230,16 +230,16 @@ export default function PortfolioExperience() {
             className="pointer-events-none absolute inset-0"
             style={{
               background: lightsOn
-                ? `radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(140,223,255,0.10), transparent 32%), radial-gradient(circle at 78% 70%, rgba(88,233,193,0.08), transparent 34%), linear-gradient(to bottom, rgba(4,7,13,0.28), rgba(4,7,13,0.86))`
-                : `radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(140,223,255,0.11), transparent 10%), radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(140,223,255,0.04), transparent 16%), radial-gradient(circle at 78% 70%, rgba(88,233,193,0.03), transparent 30%), linear-gradient(to bottom, rgba(1,2,5,0.92), rgba(1,2,5,0.995))`,
+                ? `radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(0,242,255,0.10), transparent 32%), radial-gradient(circle at 78% 70%, rgba(0,242,255,0.06), transparent 34%), linear-gradient(to bottom, rgba(0,0,0,0.28), rgba(0,0,0,0.86))`
+                : `radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(0,242,255,0.06), transparent 10%), radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(0,242,255,0.02), transparent 16%), radial-gradient(circle at 78% 70%, rgba(0,242,255,0.01), transparent 30%), linear-gradient(to bottom, rgba(0,0,0,0.92), rgba(0,0,0,0.995))`,
             }}
           />
           <div
             className="pointer-events-none absolute inset-0 z-[21] transition-opacity duration-700"
             style={{
               background: lightsOn
-                ? `radial-gradient(circle 24rem at ${mouse.x}% ${mouse.y}%, rgba(255,255,255,0.14), rgba(255,248,220,0.10) 18%, rgba(255,248,220,0.04) 40%, transparent 72%)`
-                : `radial-gradient(circle 8rem at ${mouse.x}% ${mouse.y}%, rgba(255,255,255,0.16), rgba(255,248,220,0.10) 16%, rgba(255,248,220,0.03) 34%, transparent 64%)`,
+                ? `radial-gradient(circle 28rem at ${mouse.x}% ${mouse.y}%, rgba(255,255,255,0.16), rgba(0,242,255,0.08) 18%, rgba(0,242,255,0.03) 40%, transparent 72%)`
+                : `radial-gradient(circle 8rem at ${mouse.x}% ${mouse.y}%, rgba(255,255,255,0.18), rgba(0,242,255,0.04) 16%, rgba(0,242,255,0.02) 34%, transparent 64%)`,
               filter: "blur(2px)",
             }}
           />
@@ -301,9 +301,9 @@ export default function PortfolioExperience() {
               >
                 {/* CSS/HTML rope visuals (no external SVG) - tall thin strand + handle */}
                 <div className="absolute inset-x-0 top-0 h-full w-full select-none pointer-events-none">
-                  <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[4px] h-full bg-gradient-to-b from-amber-400/40 via-amber-300/10 to-transparent opacity-70" />
-                  <div className="absolute bottom-8 left-1/2 -translate-x-1/2 h-12 w-12 rounded-full border border-amber-100/25 bg-[#120d08]/75 shadow-[0_0_40px_rgba(255,214,144,0.18)]" />
-                  <div className="absolute top-6 left-1/2 -translate-x-1/2 h-3 w-3 rounded-full bg-amber-100/30 shadow-[0_0_18px_rgba(255,225,170,0.28)]" />
+                  <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[4px] h-full bg-gradient-to-b from-cyan-400/40 via-cyan-300/10 to-transparent opacity-80" />
+                  <div className="absolute bottom-8 left-1/2 -translate-x-1/2 h-12 w-12 rounded-full border border-cyan-100/25 bg-black/60 shadow-[0_0_40px_rgba(0,242,255,0.14)]" />
+                  <div className="absolute top-6 left-1/2 -translate-x-1/2 h-3 w-3 rounded-full bg-cyan-100/30 shadow-[0_0_18px_rgba(0,242,255,0.18)]" />
                 </div>
               </motion.div>
             </div>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SHASHANK // RESEARCH_LAB</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Geist:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#554500",
+                        "surface-bright": "#333b3b",
+                        "on-surface-variant": "#b9cacb",
+                        "secondary": "#76d6d5",
+                        "outline-variant": "#3a494b",
+                        "on-secondary-fixed": "#002020",
+                        "secondary-container": "#007f7f",
+                        "on-tertiary-fixed": "#221b00",
+                        "surface-container-lowest": "#080f10",
+                        "on-error": "#690005",
+                        "primary-fixed": "#74f5ff",
+                        "background": "#0d1515",
+                        "secondary-fixed": "#93f2f2",
+                        "tertiary-fixed": "#ffe173",
+                        "error": "#ffb4ab",
+                        "on-surface": "#dce4e4",
+                        "inverse-surface": "#dce4e4",
+                        "surface-variant": "#2e3637",
+                        "surface-container-high": "#232b2c",
+                        "inverse-primary": "#00696f",
+                        "surface": "#0d1515",
+                        "secondary-fixed-dim": "#76d6d5",
+                        "on-primary-fixed": "#002022",
+                        "primary-container": "#00f2ff",
+                        "outline": "#849495",
+                        "error-container": "#93000a",
+                        "on-background": "#dce4e4",
+                        "tertiary": "#fff6e4",
+                        "primary": "#e1fdff",
+                        "surface-container-highest": "#2e3637",
+                        "surface-container-low": "#151d1e",
+                        "inverse-on-surface": "#2a3232",
+                        "on-error-container": "#ffdad6",
+                        "surface-tint": "#00dbe7",
+                        "primary-fixed-dim": "#00dbe7",
+                        "tertiary-fixed-dim": "#e8c423",
+                        "on-secondary-container": "#ddfffe",
+                        "on-secondary": "#003737",
+                        "on-primary-container": "#006a71",
+                        "on-primary": "#00363a",
+                        "on-tertiary": "#3b2f00",
+                        "tertiary-container": "#fed83a",
+                        "surface-container": "#192122",
+                        "on-primary-fixed-variant": "#004f54",
+                        "surface-dim": "#0d1515",
+                        "on-tertiary-container": "#725e00",
+                        "on-secondary-fixed-variant": "#004f4f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "section-gap": "160px",
+                        "container-max": "1200px",
+                        "unit": "8px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Geist"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "headline-md": ["Geist"],
+                        "display-lg": ["Geist"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "letterSpacing": "0px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                        "label-mono": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                        "headline-md": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "display-lg": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0d1515;
+            color: #dce4e4;
+            scroll-behavior: smooth;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .scroll-line {
+            height: 2px;
+            background: #00dbe7;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            width: 30%; /* Dynamic value usually handled via JS, set static for UI demo */
+        }
+        .leader-line {
+            flex-grow: 1;
+            border-bottom: 1px dotted rgba(185, 202, 203, 0.3);
+            margin: 0 12px;
+            margin-bottom: 4px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="selection:bg-primary-container selection:text-on-primary-container">
+<div class="scroll-line"></div>
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface/5 backdrop-blur-xl border-b border-white/10">
+<div class="max-w-container-max mx-auto h-16 flex justify-between items-center px-gutter">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="science">science</span>
+<span class="font-label-mono text-label-mono tracking-[0.2em] text-on-surface uppercase">SHASHANK // RESEARCH_LAB</span>
+</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="font-label-mono text-label-mono text-on-surface-variant opacity-60 hover:opacity-100 hover:text-primary transition-all duration-300" href="#">DEPT_01</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant opacity-60 hover:opacity-100 hover:text-primary transition-all duration-300" href="#">DEPT_02</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant opacity-60 hover:opacity-100 hover:text-primary transition-all duration-300" href="#">DEPT_03</a>
+<a class="font-label-mono text-label-mono text-primary font-bold transition-all duration-300" href="#">DEPT_04</a>
+<button class="material-symbols-outlined text-primary hover:scale-95 transition-transform" data-icon="light_mode">light_mode</button>
+</nav>
+</div>
+</header>
+<main class="pt-32">
+<!-- DEPT_04 // CORE_SYSTEMS (Technical Expertise) -->
+<section class="max-w-container-max mx-auto px-gutter mb-section-gap">
+<div class="mb-12">
+<h2 class="font-display-lg-mobile text-display-lg-mobile md:font-headline-md md:text-headline-md text-primary mb-4">DEPT_04 // CORE_SYSTEMS</h2>
+<div class="h-px w-24 bg-primary"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+<!-- AI Focus Card -->
+<div class="md:col-span-4 glass-card p-8 rounded-lg relative overflow-hidden group">
+<div class="absolute -right-8 -top-8 w-32 h-32 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-all"></div>
+<span class="font-label-mono text-label-mono text-secondary mb-6 block">SYSTEMS_ARCHITECTURE.AI</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-8">Artificial Intelligence</h3>
+<div class="space-y-6">
+<div class="space-y-2">
+<div class="flex justify-between items-end">
+<span class="font-label-mono text-label-mono uppercase">Reinforcement Learning</span>
+<span class="font-label-mono text-label-mono opacity-60">0.94</span>
+</div>
+<div class="h-1 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[94%]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-end">
+<span class="font-label-mono text-label-mono uppercase">Adversarial ML</span>
+<span class="font-label-mono text-label-mono opacity-60">0.88</span>
+</div>
+<div class="h-1 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[88%]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-end">
+<span class="font-label-mono text-label-mono uppercase">Neural Architecture</span>
+<span class="font-label-mono text-label-mono opacity-60">0.82</span>
+</div>
+<div class="h-1 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[82%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Simulation & Systems -->
+<div class="md:col-span-8 flex flex-col gap-6">
+<div class="glass-card p-8 rounded-lg flex flex-col md:flex-row gap-8 items-center">
+<div class="w-full md:w-1/3">
+<span class="font-label-mono text-label-mono text-secondary mb-2 block">MODULE_02</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Simulation</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-4">High-fidelity environmental modelling for autonomous agent stress-testing and validation.</p>
+</div>
+<div class="flex-1 w-full grid grid-cols-2 gap-4">
+<div class="border border-white/10 p-4 rounded bg-surface-container-low">
+<span class="font-label-mono text-[10px] text-outline block mb-1">STABILITY</span>
+<span class="font-label-mono text-primary text-lg">99.9%</span>
+</div>
+<div class="border border-white/10 p-4 rounded bg-surface-container-low">
+<span class="font-label-mono text-[10px] text-outline block mb-1">LATENCY</span>
+<span class="font-label-mono text-primary text-lg">14ms</span>
+</div>
+<div class="border border-white/10 p-4 rounded bg-surface-container-low">
+<span class="font-label-mono text-[10px] text-outline block mb-1">COMPUTE</span>
+<span class="font-label-mono text-primary text-lg">HYBRID</span>
+</div>
+<div class="border border-white/10 p-4 rounded bg-surface-container-low">
+<span class="font-label-mono text-[10px] text-outline block mb-1">THROUGHPUT</span>
+<span class="font-label-mono text-primary text-lg">4.2GB/s</span>
+</div>
+</div>
+</div>
+<div class="glass-card p-8 rounded-lg">
+<span class="font-label-mono text-label-mono text-secondary mb-2 block">MODULE_03</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-6">Core Systems</h3>
+<div class="flex flex-wrap gap-3">
+<span class="px-3 py-1 border border-white/20 font-label-mono text-label-mono hover:border-primary hover:text-primary transition-colors cursor-default">RUST_OS</span>
+<span class="px-3 py-1 border border-white/20 font-label-mono text-label-mono hover:border-primary hover:text-primary transition-colors cursor-default">DISTRIBUTED_NETWORKS</span>
+<span class="px-3 py-1 border border-white/20 font-label-mono text-label-mono hover:border-primary hover:text-primary transition-colors cursor-default">KERNEL_HACKING</span>
+<span class="px-3 py-1 border border-white/20 font-label-mono text-label-mono hover:border-primary hover:text-primary transition-colors cursor-default">GPGPU_COMPUTE</span>
+<span class="px-3 py-1 border border-white/20 font-label-mono text-label-mono hover:border-primary hover:text-primary transition-colors cursor-default">REAL_TIME_RTOS</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- DEPT_05 // RECORD_LOG (Experience) -->
+<section class="max-w-container-max mx-auto px-gutter mb-section-gap relative">
+<!-- Glow background -->
+<div class="absolute -left-40 top-1/2 -translate-y-1/2 w-96 h-96 bg-secondary/5 blur-[120px] rounded-full -z-10"></div>
+<div class="mb-12 flex justify-between items-end">
+<div>
+<h2 class="font-display-lg-mobile text-display-lg-mobile md:font-headline-md md:text-headline-md text-primary mb-4">DEPT_05 // RECORD_LOG</h2>
+<div class="h-px w-24 bg-primary"></div>
+</div>
+<span class="hidden md:block font-label-mono text-label-mono text-outline">[TOTAL_ENTRIES: 004]</span>
+</div>
+<div class="space-y-12">
+<!-- Log Entry 1 -->
+<div class="group flex flex-col md:flex-row gap-4 md:gap-12 relative pb-12 border-b border-white/5">
+<div class="md:w-32 flex-shrink-0">
+<span class="font-label-mono text-label-mono text-secondary">2023 — PRESENT</span>
+</div>
+<div class="flex-grow">
+<div class="flex items-center mb-2">
+<h4 class="font-headline-md text-headline-md text-on-surface">Lead AI Researcher</h4>
+<div class="leader-line hidden md:block"></div>
+<span class="font-label-mono text-label-mono text-outline">NEURAL_DYNAMICS_INC</span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl">Architecting adversarial training pipelines for safety-critical machine learning systems. Implementing robust RL agents in simulated industrial environments.</p>
+</div>
+<div class="md:w-24 flex justify-end">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="north_east">north_east</span>
+</div>
+</div>
+<!-- Log Entry 2 -->
+<div class="group flex flex-col md:flex-row gap-4 md:gap-12 relative pb-12 border-b border-white/5">
+<div class="md:w-32 flex-shrink-0">
+<span class="font-label-mono text-label-mono text-secondary">2021 — 2023</span>
+</div>
+<div class="flex-grow">
+<div class="flex items-center mb-2">
+<h4 class="font-headline-md text-headline-md text-on-surface">Systems Engineer</h4>
+<div class="leader-line hidden md:block"></div>
+<span class="font-label-mono text-label-mono text-outline">VOID_LABS</span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl">Optimization of low-latency data streaming protocols for high-frequency telemetry. Developed custom Rust-based middleware for distributed sensor fusion.</p>
+</div>
+<div class="md:w-24 flex justify-end">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="north_east">north_east</span>
+</div>
+</div>
+<!-- Log Entry 3 -->
+<div class="group flex flex-col md:flex-row gap-4 md:gap-12 relative pb-12 border-b border-white/5">
+<div class="md:w-32 flex-shrink-0">
+<span class="font-label-mono text-label-mono text-secondary">2019 — 2021</span>
+</div>
+<div class="flex-grow">
+<div class="flex items-center mb-2">
+<h4 class="font-headline-md text-headline-md text-on-surface">Graduate Research Fellow</h4>
+<div class="leader-line hidden md:block"></div>
+<span class="font-label-mono text-label-mono text-outline">INSTITUTE_OF_TECH</span>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl">Focused on emergent behaviors in multi-agent swarm systems. Published 3 peer-reviewed papers on decentralized coordination and fault tolerance.</p>
+</div>
+<div class="md:w-24 flex justify-end">
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="north_east">north_east</span>
+</div>
+</div>
+</div>
+</section>
+<!-- DEPT_06 // TERMINATE_CONNECTION (Contact) -->
+<section class="max-w-container-max mx-auto px-gutter mb-section-gap">
+<div class="mb-12">
+<h2 class="font-display-lg-mobile text-display-lg-mobile md:font-headline-md md:text-headline-md text-primary mb-4">DEPT_06 // TERMINATE_CONNECTION</h2>
+<div class="h-px w-24 bg-primary"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+<div>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-12">System open for collaboration on high-fidelity research and engineering initiatives. Select a protocol below to establish uplink.</p>
+<div class="space-y-4">
+<a class="flex items-center justify-between p-6 border border-white/10 hover:border-primary hover:bg-primary/5 transition-all group" href="#">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary" data-icon="terminal">terminal</span>
+<span class="font-label-mono text-label-mono">GITHUB // SOURCE_CONTROL</span>
+</div>
+<span class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity" data-icon="arrow_forward">arrow_forward</span>
+</a>
+<a class="flex items-center justify-between p-6 border border-white/10 hover:border-primary hover:bg-primary/5 transition-all group" href="#">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary" data-icon="account_tree">account_tree</span>
+<span class="font-label-mono text-label-mono">LINKEDIN // PROFESSIONAL_LOG</span>
+</div>
+<span class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity" data-icon="arrow_forward">arrow_forward</span>
+</a>
+<a class="flex items-center justify-between p-6 border border-white/10 hover:border-primary hover:bg-primary/5 transition-all group" href="mailto:research@shashank.lab">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary" data-icon="alternate_email">alternate_email</span>
+<span class="font-label-mono text-label-mono">EMAIL // DIRECT_UPLINK</span>
+</div>
+<span class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+<div class="glass-card p-8 rounded-lg">
+<form class="space-y-8">
+<div class="space-y-2">
+<label class="font-label-mono text-label-mono text-outline uppercase">Sender Identity</label>
+<input class="w-full bg-transparent border-b border-white/20 focus:border-primary focus:ring-0 px-0 py-3 font-body-sm text-on-surface placeholder:text-outline/30 transition-colors" placeholder="NAME / ORGANIZATION" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-mono text-label-mono text-outline uppercase">Return Address</label>
+<input class="w-full bg-transparent border-b border-white/20 focus:border-primary focus:ring-0 px-0 py-3 font-body-sm text-on-surface placeholder:text-outline/30 transition-colors" placeholder="EMAIL_PROTOCOL" type="email"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-mono text-label-mono text-outline uppercase">Transmission Content</label>
+<textarea class="w-full bg-transparent border-b border-white/20 focus:border-primary focus:ring-0 px-0 py-3 font-body-sm text-on-surface placeholder:text-outline/30 transition-colors resize-none" placeholder="MESSAGE_DATA_STREAM..." rows="4"></textarea>
+</div>
+<button class="w-full py-4 bg-primary text-background font-label-mono text-label-mono font-bold uppercase tracking-widest hover:shadow-[0_0_20px_rgba(0,219,231,0.4)] transition-all active:scale-95" type="submit">
+                            INITIATE_HANDSHAKE
+                        </button>
+</form>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="border-t border-white/5 py-section-gap">
+<div class="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row justify-between items-center opacity-40">
+<span class="font-label-mono text-label-mono text-on-surface mb-6 md:mb-0">© 2024 SHASHANK. ALL RIGHTS RESERVED. [SYSTEM_STABLE]</span>
+<div class="flex gap-12">
+<a class="font-label-mono text-label-mono text-outline hover:text-primary transition-colors duration-500 underline-offset-4 hover:underline" href="#">GITHUB</a>
+<a class="font-label-mono text-label-mono text-outline hover:text-primary transition-colors duration-500 underline-offset-4 hover:underline" href="#">LINKEDIN</a>
+<a class="font-label-mono text-label-mono text-outline hover:text-primary transition-colors duration-500 underline-offset-4 hover:underline" href="#">SOURCE_CODE</a>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 md:hidden bg-background/80 backdrop-blur-md border-t border-white/5 shadow-[0_-10px_40px_rgba(0,219,231,0.05)] rounded-t-xl px-4">
+<a class="flex flex-col items-center justify-center text-outline opacity-40 hover:opacity-100 hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+<span class="font-label-mono text-[10px] mt-1">DEPT_01</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline opacity-40 hover:opacity-100 hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="biotech">biotech</span>
+<span class="font-label-mono text-[10px] mt-1">DEPT_02</span>
+</a>
+<a class="flex flex-col items-center justify-center text-outline opacity-40 hover:opacity-100 hover:bg-white/5 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="layers">layers</span>
+<span class="font-label-mono text-[10px] mt-1">DEPT_03</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary bg-primary/10 rounded-full py-1 px-4 scale-90 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="account_tree">account_tree</span>
+<span class="font-label-mono text-[10px] mt-1">DEPT_04</span>
+</a>
+</nav>
+</body></html>
