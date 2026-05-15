@@ -203,11 +203,11 @@ export default function PortfolioExperience() {
     <div ref={rootRef} className="bg-[#04070d] text-slate-200">
       <main className="relative overflow-hidden">
         <div
-          className="pointer-events-none fixed inset-0 z-20 opacity-40"
+          className="pointer-events-none fixed inset-0 z-20"
           style={{
             background: lightsOn
-              ? `radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(113,240,201,0.12), transparent 30%)`
-              : `radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(113,240,201,0.18), transparent 24%)`,
+              ? `radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(113,240,201,0.10), transparent 26%)`
+              : `radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(113,240,201,0.12), transparent 16%)`,
           }}
         />
 
@@ -219,16 +219,16 @@ export default function PortfolioExperience() {
             className="pointer-events-none absolute inset-0"
             style={{
               background: lightsOn
-                ? `radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(140,223,255,0.15), transparent 38%), radial-gradient(circle at 78% 70%, rgba(88,233,193,0.14), transparent 38%), linear-gradient(to bottom, rgba(4,7,13,0.22), rgba(4,7,13,0.74))`
-                : `radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(140,223,255,0.22), transparent 20%), radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(140,223,255,0.08), transparent 34%), radial-gradient(circle at 78% 70%, rgba(88,233,193,0.08), transparent 38%), linear-gradient(to bottom, rgba(4,7,13,0.48), rgba(4,7,13,0.96))`,
+                ? `radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(140,223,255,0.13), transparent 34%), radial-gradient(circle at 78% 70%, rgba(88,233,193,0.10), transparent 36%), linear-gradient(to bottom, rgba(4,7,13,0.30), rgba(4,7,13,0.82))`
+                : `radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(140,223,255,0.16), transparent 14%), radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(140,223,255,0.07), transparent 22%), radial-gradient(circle at 78% 70%, rgba(88,233,193,0.05), transparent 34%), linear-gradient(to bottom, rgba(1,2,5,0.82), rgba(1,2,5,0.98))`,
             }}
           />
           <div
             className="pointer-events-none absolute inset-0 z-[21] transition-opacity duration-700"
             style={{
               background: lightsOn
-                ? `radial-gradient(circle 32rem at ${mouse.x}% ${mouse.y}%, rgba(255,247,214,0.14), transparent 42%)`
-                : `radial-gradient(circle 16rem at ${mouse.x}% ${mouse.y}%, rgba(255,247,214,0.2), transparent 55%)`,
+                ? `radial-gradient(circle 28rem at ${mouse.x}% ${mouse.y}%, rgba(255,247,214,0.12), transparent 44%)`
+                : `radial-gradient(circle 10rem at ${mouse.x}% ${mouse.y}%, rgba(255,247,214,0.18), transparent 58%)`,
             }}
           />
 
@@ -259,21 +259,18 @@ export default function PortfolioExperience() {
                 Scroll to enter the lab
                 <span className="animate-bounce text-base">v</span>
               </div>
-              <div className="rounded-full border border-amber-100/15 bg-amber-100/5 px-4 py-2 text-[10px] uppercase tracking-[0.28em] text-amber-50/75">
-                Flashlight cursor active
-              </div>
             </div>
           </div>
 
           <div className="absolute right-4 top-16 z-10 hidden lg:block">
-            <div className="relative flex h-[34rem] w-[9rem] flex-col items-center justify-start">
+            <div className="relative flex h-[88vh] min-h-[42rem] w-[7rem] flex-col items-center justify-start">
               <Image
                 src="/rope.svg"
                 alt="Rope switch"
                 width={218}
                 height={2468}
                 priority={false}
-                className="pointer-events-none h-full w-auto select-none opacity-55 drop-shadow-[0_0_26px_rgba(255,225,170,0.18)]"
+                className="pointer-events-none h-full w-auto select-none opacity-60 drop-shadow-[0_0_26px_rgba(255,225,170,0.14)]"
               />
               <motion.button
                 type="button"
@@ -285,15 +282,13 @@ export default function PortfolioExperience() {
                   if (info.offset.y > 72) setLightsOn(true);
                   setRopePull(0);
                 }}
-                animate={{ y: lightsOn ? 104 : ropePull * 96 }}
+                animate={{ y: lightsOn ? 130 : ropePull * 96 }}
                 transition={{ type: "spring", stiffness: 260, damping: 24 }}
-                className="absolute bottom-2 flex h-16 w-16 items-center justify-center rounded-full border border-amber-100/25 bg-[#120d08]/75 text-[10px] uppercase tracking-[0.28em] text-amber-50 shadow-[0_0_40px_rgba(255,214,144,0.18)] backdrop-blur"
+                aria-label="Pull the switch to turn on the lights"
+                className="absolute bottom-2 h-16 w-16 rounded-full border border-amber-100/25 bg-[#120d08]/75 shadow-[0_0_40px_rgba(255,214,144,0.18)] backdrop-blur"
               >
-                pull
+                <span className="sr-only">Pull the switch to turn on the lights</span>
               </motion.button>
-              <p className="mt-4 max-w-[8rem] text-center text-[10px] uppercase tracking-[0.2em] text-amber-50/55">
-                Pull the switch to bring the room up gradually
-              </p>
             </div>
           </div>
         </section>
