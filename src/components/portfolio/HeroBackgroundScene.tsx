@@ -50,8 +50,8 @@ const FieldMaterial = shaderMaterial(
       float glow = exp(-8.5 * dot(centered - (uMouse - 0.5) * 0.28, centered - (uMouse - 0.5) * 0.28));
 
       vec3 base = vec3(0.0, 0.0, 0.0);
-      vec3 cyan = vec3(0.49, 0.83, 1.0) * (flowA * 0.35 + flowB * 0.22);
-      vec3 mint = vec3(0.45, 0.94, 0.80) * (node * 0.25 + glow * 0.12);
+      vec3 cyan = vec3(1.0, 0.48, 0.0) * (flowA * 0.35 + flowB * 0.22);
+      vec3 mint = vec3(1.0, 0.30, 0.0) * (node * 0.25 + glow * 0.12);
 
       vec3 color = base + cyan + mint;
       float vignette = smoothstep(0.98, 0.18, length(centered));
@@ -111,7 +111,7 @@ function NeuralField() {
     <Points ref={ref} positions={cloud} stride={3} frustumCulled>
       <PointMaterial
         transparent
-        color="#8fd6ff"
+        color="#ff7722"
         size={0.035}
         sizeAttenuation
         depthWrite={false}
@@ -136,7 +136,7 @@ function Trajectories() {
       }
       return {
         points,
-        color: idx % 2 === 0 ? "#4ec2ff" : "#6af0c0",
+        color: idx % 2 === 0 ? "#ff7722" : "#ff4d00",
       };
     });
   }, []);
@@ -187,8 +187,8 @@ export default function HeroBackgroundScene({ lightsOn }: { lightsOn: boolean })
       <color attach="background" args={["#000000"]} />
       <fog attach="fog" args={["#000000", lightsOn ? 10 : 6, lightsOn ? 26 : 14]} />
       <ambientLight intensity={lightsOn ? 0.32 : 0.02} />
-      <directionalLight position={[6, 7, 3]} intensity={lightsOn ? 0.9 : 0.06} color="#69f3ff" />
-      <directionalLight position={[-6, -5, -3]} intensity={lightsOn ? 0.45 : 0.02} color="#6af0c0" />
+      <directionalLight position={[6, 7, 3]} intensity={lightsOn ? 0.9 : 0.06} color="#ff7722" />
+      <directionalLight position={[-6, -5, -3]} intensity={lightsOn ? 0.45 : 0.02} color="#ff4d00" />
       <FieldPlane lightsOn={lightsOn} />
       <NeuralField />
       <Trajectories />

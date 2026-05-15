@@ -1,22 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&family=Inter:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
 @import "tailwindcss";
 
 :root {
-  /* Design tokens from DESIGN.md */
+  /* Aether Laboratory Design System */
   --background: #000000;
-  --surface: #0d1515;
-  --on-surface: #dce4e4;
-  --muted: #9fb4c8;
-  --primary-cyan: #00f2ff;
-  --primary-cyan-dim: #00dbe7;
-  --accent-mint: #73f0c9;
-  --glass-tint: rgba(255,255,255,0.05);
+  --surface: #0a0a0a;
+  --surface-dim: #050505;
+  --on-surface: #f5f5f5;
+  --outline: #a1a1aa;
+  --accent: #FF4D00;
+  --secondary: #FF4D00;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--on-surface);
-  --font-sans: Geist, Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Geist", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
 }
 
 body {
@@ -31,8 +31,8 @@ body {
 }
 
 ::selection {
-  background: rgba(0, 242, 255, 0.20);
-  color: #000000;
+  background: rgba(255, 77, 0, 0.30);
+  color: #f5f5f5;
 }
 
 .grain-overlay {
@@ -40,7 +40,43 @@ body {
   inset: 0;
   pointer-events: none;
   z-index: 50;
-  opacity: 0.04;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.42) 0.55px, transparent 0.55px);
+  opacity: 0.03;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.40) 0.55px, transparent 0.55px);
   background-size: 2px 2px;
+}
+
+.flashlight-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle 250px at var(--x, 50%) var(--y, 50%),
+    transparent 0%,
+    rgba(0, 0, 0, 0.98) 100%
+  );
+  z-index: 40;
+}
+
+.revealed-content {
+  mask-image: radial-gradient(
+    circle 250px at var(--x, 50%) var(--y, 50%),
+    black 0%,
+    transparent 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    circle 250px at var(--x, 50%) var(--y, 50%),
+    black 0%,
+    transparent 100%
+  );
+}
+
+.dotted-leader {
+  background-image: radial-gradient(circle, #849495 1px, transparent 1px);
+  background-size: 8px 8px;
+  background-position: center;
+  background-repeat: repeat-x;
+  height: 1px;
+  flex-grow: 1;
+  margin: 0 12px;
+  opacity: 0.3;
 }

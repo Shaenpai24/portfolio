@@ -206,19 +206,10 @@ export default function PortfolioExperience() {
     <div ref={rootRef} className="bg-black text-[var(--on-surface)]">
       <main className="relative overflow-hidden">
         <div
-          className="pointer-events-none fixed inset-0 z-20"
+          className="flashlight-overlay pointer-events-none fixed inset-0 z-20"
           style={{
-            background: lightsOn
-              ? `radial-gradient(circle ${Math.max(20, 18 + (mouse.x / 100) * 18)}rem at ${mouse.x}% ${mouse.y}%, rgba(255,255,255,0.92) 0%, rgba(255,255,255,0.55) 18%, rgba(255,255,255,0.18) 36%, rgba(255,255,255,0.04) 54%, transparent 72%)`
-              : `radial-gradient(circle ${Math.max(8, 6 + (mouse.x / 100) * 6)}rem at ${mouse.x}% ${mouse.y}%, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 36%, rgba(255,255,255,0) 38%)`,
-            WebkitMaskImage: siteMask,
-            maskImage: siteMask,
-            WebkitMaskRepeat: "no-repeat",
-            maskRepeat: "no-repeat",
-            WebkitMaskSize: "100% 100%",
-            maskSize: "100% 100%",
-            mixBlendMode: "screen",
-            opacity: lightsOn ? 0.92 : 1,
+            background: `radial-gradient(circle 250px at var(--x, 50%) var(--y, 50%), transparent 0%, rgba(0, 0, 0, 0.98) 100%)`,
+            zIndex: 40,
           }}
         />
 
@@ -230,16 +221,16 @@ export default function PortfolioExperience() {
             className="pointer-events-none absolute inset-0"
             style={{
               background: lightsOn
-                ? `radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(0,242,255,0.10), transparent 32%), radial-gradient(circle at 78% 70%, rgba(0,242,255,0.06), transparent 34%), linear-gradient(to bottom, rgba(0,0,0,0.28), rgba(0,0,0,0.86))`
-                : `radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(0,242,255,0.06), transparent 10%), radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(0,242,255,0.02), transparent 16%), radial-gradient(circle at 78% 70%, rgba(0,242,255,0.01), transparent 30%), linear-gradient(to bottom, rgba(0,0,0,0.92), rgba(0,0,0,0.995))`,
+                ? `radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(255,77,0,0.08), transparent 32%), linear-gradient(to bottom, rgba(0,0,0,0.28), rgba(0,0,0,0.86))`
+                : `radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(255,77,0,0.04), transparent 10%), linear-gradient(to bottom, rgba(0,0,0,0.92), rgba(0,0,0,0.995))`,
             }}
           />
           <div
             className="pointer-events-none absolute inset-0 z-[21] transition-opacity duration-700"
             style={{
               background: lightsOn
-                ? `radial-gradient(circle 28rem at ${mouse.x}% ${mouse.y}%, rgba(255,255,255,0.16), rgba(0,242,255,0.08) 18%, rgba(0,242,255,0.03) 40%, transparent 72%)`
-                : `radial-gradient(circle 8rem at ${mouse.x}% ${mouse.y}%, rgba(255,255,255,0.18), rgba(0,242,255,0.04) 16%, rgba(0,242,255,0.02) 34%, transparent 64%)`,
+                ? `radial-gradient(circle 250px at ${mouse.x}% ${mouse.y}%, rgba(255,77,0,0.12), rgba(255,77,0,0.04) 50%, transparent 100%)`
+                : `radial-gradient(circle 200px at ${mouse.x}% ${mouse.y}%, rgba(255,77,0,0.08), transparent 100%)`,
               filter: "blur(2px)",
             }}
           />
@@ -260,7 +251,7 @@ export default function PortfolioExperience() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.12 }}
-                className="mb-6 text-sm uppercase tracking-[0.3em] text-cyan-100/70"
+                className="mb-6 text-sm uppercase tracking-[0.3em] text-orange-100/70"
               >
                 {profile.subtitle}
               </motion.p>
@@ -275,10 +266,10 @@ export default function PortfolioExperience() {
                   {profile.heroTitle}
                 </span>
               </motion.h1>
-              <p className="mt-5 max-w-2xl text-sm uppercase tracking-[0.2em] text-cyan-100/65">{profile.heroEyebrow}</p>
+              <p className="mt-5 max-w-2xl text-sm uppercase tracking-[0.2em] text-orange-100/65">{profile.heroEyebrow}</p>
 
               <div className="mt-12 flex flex-wrap items-center gap-3">
-                <div className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-5 py-2 text-xs uppercase tracking-[0.18em] text-cyan-100/85 backdrop-blur">
+                <div className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-5 py-2 text-xs uppercase tracking-[0.18em] text-orange-100/85 backdrop-blur">
                   Scroll to enter the lab
                   <span className="animate-bounce text-base">v</span>
                 </div>
@@ -301,9 +292,9 @@ export default function PortfolioExperience() {
               >
                 {/* CSS/HTML rope visuals (no external SVG) - tall thin strand + handle */}
                 <div className="absolute inset-x-0 top-0 h-full w-full select-none pointer-events-none">
-                  <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[4px] h-full bg-gradient-to-b from-cyan-400/40 via-cyan-300/10 to-transparent opacity-80" />
-                  <div className="absolute bottom-8 left-1/2 -translate-x-1/2 h-12 w-12 rounded-full border border-cyan-100/25 bg-black/60 shadow-[0_0_40px_rgba(0,242,255,0.14)]" />
-                  <div className="absolute top-6 left-1/2 -translate-x-1/2 h-3 w-3 rounded-full bg-cyan-100/30 shadow-[0_0_18px_rgba(0,242,255,0.18)]" />
+                  <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[4px] h-full bg-gradient-to-b from-orange-400/40 via-orange-300/10 to-transparent opacity-80" />
+                  <div className="absolute bottom-8 left-1/2 -translate-x-1/2 h-12 w-12 rounded-full border border-orange-100/25 bg-black/60 shadow-[0_0_40px_rgba(255,77,0,0.14)]" />
+                  <div className="absolute top-6 left-1/2 -translate-x-1/2 h-3 w-3 rounded-full bg-orange-100/30 shadow-[0_0_18px_rgba(255,77,0,0.18)]" />
                 </div>
               </motion.div>
             </div>
@@ -314,13 +305,13 @@ export default function PortfolioExperience() {
           <div className="mx-auto max-w-6xl">
             <SectionHeading eyebrow="About / Story" title={profile.sectionCopy.aboutTitle} />
             <div className="mb-12 h-px w-full bg-white/10">
-              <div className="about-progress-fill h-full w-0 bg-gradient-to-r from-cyan-300/80 via-emerald-300/70 to-sky-300/80" />
+              <div className="about-progress-fill h-full w-0 bg-gradient-to-r from-orange-300/80 via-orange-300/70 to-orange-300/80" />
             </div>
 
             <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
               <div className="h-fit lg:sticky lg:top-20">
                 <div className="reveal rounded-2xl border border-white/12 bg-white/[0.03] p-6 backdrop-blur-sm">
-                  <p className="text-xs uppercase tracking-[0.24em] text-cyan-100/70">Narrative Trajectory</p>
+                  <p className="text-xs uppercase tracking-[0.24em] text-orange-100/70">Narrative Trajectory</p>
                   <p className="mt-4 text-sm leading-relaxed text-slate-300">
                     Systems curiosity led to simulation-first thinking, then to optimization, reinforcement learning, graph structures, and adversarial robustness research.
                   </p>
@@ -330,7 +321,7 @@ export default function PortfolioExperience() {
               <div className="space-y-5">
                 {storyPhases.map((phase, idx) => (
                   <article key={phase.id} className="reveal rounded-2xl border border-white/12 bg-white/[0.03] p-6 backdrop-blur-sm">
-                    <p className="mb-3 text-xs uppercase tracking-[0.22em] text-cyan-100/70">{phase.label}</p>
+                    <p className="mb-3 text-xs uppercase tracking-[0.22em] text-orange-100/70">{phase.label}</p>
                     <p className="text-sm leading-relaxed text-slate-300 md:text-base">{phase.text}</p>
                     <div className="mt-5 flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-slate-400">
                       <span className="inline-block h-px flex-1 bg-white/15" />
@@ -377,7 +368,7 @@ export default function PortfolioExperience() {
 
                         <div className="mb-7 flex flex-wrap gap-2">
                           {project.tech.map((item) => (
-                            <span key={item} className="rounded-full border border-cyan-100/30 bg-cyan-100/10 px-3 py-1 text-xs uppercase tracking-[0.14em] text-cyan-100/90">
+                        <span key={item} className="rounded-full border border-orange-100/30 bg-orange-100/10 px-3 py-1 text-xs uppercase tracking-[0.14em] text-orange-100/90">
                               {item}
                             </span>
                           ))}
@@ -385,11 +376,11 @@ export default function PortfolioExperience() {
 
                         <div className="grid gap-4 md:grid-cols-2">
                           <div className="rounded-2xl border border-white/15 bg-black/20 p-4">
-                            <p className="mb-1 text-xs uppercase tracking-[0.2em] text-cyan-100/65">Engineering Challenge</p>
+                            <p className="mb-1 text-xs uppercase tracking-[0.2em] text-orange-100/65">Engineering Challenge</p>
                             <p className="text-sm text-slate-300">{project.challenge}</p>
                           </div>
                           <div className="rounded-2xl border border-white/15 bg-black/20 p-4">
-                            <p className="mb-1 text-xs uppercase tracking-[0.2em] text-cyan-100/65">Result</p>
+                            <p className="mb-1 text-xs uppercase tracking-[0.2em] text-orange-100/65">Result</p>
                             <p className="text-sm text-slate-300">{project.metric}</p>
                           </div>
                         </div>
@@ -401,7 +392,7 @@ export default function PortfolioExperience() {
                             {new Array(9).fill(null).map((_, i) => (
                               <span
                                 key={i}
-                                className="w-1 rounded-full bg-cyan-200/60"
+                                className="w-1 rounded-full bg-orange-200/60"
                                 style={{ height: `${14 + ((i * 19 + index * 7) % 52)}px` }}
                               />
                             ))}
@@ -419,7 +410,7 @@ export default function PortfolioExperience() {
                           <Link
                             href={demoHref}
                             target="_blank"
-                            className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-cyan-100/35 bg-cyan-200/15 px-4 py-2 text-sm text-cyan-100 transition hover:bg-cyan-200/28"
+                            className="inline-flex flex-1 items-center justify-center gap-2 rounded-full border border-orange-100/35 bg-orange-200/15 px-4 py-2 text-sm text-orange-100 transition hover:bg-orange-200/28"
                           >
                             {demoLabel}
                             <span aria-hidden className="text-base">-&gt;</span>
@@ -446,10 +437,10 @@ export default function PortfolioExperience() {
                   whileHover={{ scale: 1.02, y: -4 }}
                   className="reveal group relative rounded-2xl border border-white/15 bg-white/[0.03] p-5"
                 >
-                  <div className="pointer-events-none absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-cyan-300/0 via-sky-300/20 to-emerald-300/0 opacity-0 blur-lg transition group-hover:opacity-100" />
+                  <div className="pointer-events-none absolute -inset-0.5 rounded-2xl bg-gradient-to-r from-orange-300/0 via-orange-300/20 to-orange-300/0 opacity-0 blur-lg transition group-hover:opacity-100" />
                   <p className="relative mb-2 text-base font-semibold text-white">{node.title}</p>
                   <p className="relative text-sm text-slate-300">{node.detail}</p>
-                  <span className="absolute right-4 top-4 text-xs text-cyan-100/60">{String(idx + 1).padStart(2, "0")}</span>
+                  <span className="absolute right-4 top-4 text-xs text-orange-100/60">{String(idx + 1).padStart(2, "0")}</span>
                 </motion.article>
               ))}
 
@@ -476,8 +467,8 @@ export default function PortfolioExperience() {
                 })}
                 <defs>
                   <linearGradient id="expertiseGradient" x1="0" x2="1" y1="0" y2="1">
-                    <stop offset="0%" stopColor="#7ad4ff" stopOpacity="0.72" />
-                    <stop offset="100%" stopColor="#73f0c9" stopOpacity="0.12" />
+                    <stop offset="0%" stopColor="#ff7722" stopOpacity="0.72" />
+                    <stop offset="100%" stopColor="#ff4d00" stopOpacity="0.12" />
                   </linearGradient>
                 </defs>
               </svg>
@@ -498,7 +489,7 @@ export default function PortfolioExperience() {
               ))}
             </div>
 
-            <div className="reveal mt-8 rounded-2xl border border-cyan-100/20 bg-gradient-to-r from-cyan-200/10 to-emerald-200/5 p-6">
+            <div className="reveal mt-8 rounded-2xl border border-orange-100/20 bg-gradient-to-r from-orange-200/10 to-orange-200/5 p-6">
               <p className="text-sm leading-relaxed text-slate-200">
                 Timeline: leading technical initiatives, winning hackathon tracks, and continuously aligning side projects with research-grade rigor.
               </p>
@@ -514,7 +505,7 @@ export default function PortfolioExperience() {
             </div>
 
             <div className="reveal rounded-3xl border border-white/15 bg-white/[0.03] p-6">
-              <p className="mb-4 text-xs uppercase tracking-[0.2em] text-cyan-100/70">Contribution Pulse</p>
+              <p className="mb-4 text-xs uppercase tracking-[0.2em] text-orange-100/70">Contribution Pulse</p>
               <div className="grid grid-cols-12 gap-1">
                 {githubHeat.map((cell, idx) => (
                   <span key={idx} className="aspect-square rounded-sm" style={{ background: cell }} />
@@ -523,7 +514,7 @@ export default function PortfolioExperience() {
               <Link
                 href={profile.githubProfile}
                 target="_blank"
-                className="mt-5 inline-flex items-center gap-2 text-sm text-cyan-100 transition hover:text-white"
+                className="mt-5 inline-flex items-center gap-2 text-sm text-orange-100 transition hover:text-white"
               >
                 Explore repositories
                 <span aria-hidden className="text-base">-&gt;</span>
@@ -533,8 +524,8 @@ export default function PortfolioExperience() {
         </section>
 
         <section className="relative px-6 pt-24 pb-28 md:px-14 lg:px-20">
-          <div className="mx-auto max-w-5xl rounded-3xl border border-white/15 bg-[linear-gradient(140deg,rgba(122,212,255,0.2),rgba(115,240,201,0.09),rgba(4,7,13,0.6))] p-8 shadow-[0_0_80px_rgba(87,183,255,0.18)] md:p-12">
-            <p className="mb-3 text-xs uppercase tracking-[0.24em] text-cyan-100/70">Contact</p>
+          <div className="mx-auto max-w-5xl rounded-3xl border border-white/15 bg-[linear-gradient(140deg,rgba(255,77,0,0.2),rgba(255,77,0,0.09),rgba(0,0,0,0.6))] p-8 shadow-[0_0_80px_rgba(255,77,0,0.18)] md:p-12">
+            <p className="mb-3 text-xs uppercase tracking-[0.24em] text-orange-100/70">Contact</p>
             <h2 className="mb-6 text-3xl font-semibold text-white md:text-5xl">{profile.finalStatement}</h2>
 
             <div className="grid gap-3 text-sm text-slate-200 md:grid-cols-2">
@@ -550,7 +541,7 @@ export default function PortfolioExperience() {
                 <span aria-hidden className="text-base">o</span>
                 GitHub
               </Link>
-              <Link href={profile.resumePath} className="inline-flex items-center gap-2 rounded-xl border border-cyan-100/35 bg-cyan-200/15 px-4 py-3 text-cyan-100 transition hover:bg-cyan-200/25">
+              <Link href={profile.resumePath} className="inline-flex items-center gap-2 rounded-xl border border-orange-100/35 bg-orange-200/15 px-4 py-3 text-orange-100 transition hover:bg-orange-200/25">
                 Resume Download
                 <span aria-hidden className="text-base">-&gt;</span>
               </Link>
