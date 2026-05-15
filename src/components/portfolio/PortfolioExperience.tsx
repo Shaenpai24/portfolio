@@ -207,15 +207,19 @@ export default function PortfolioExperience() {
     <div ref={rootRef} className="bg-[#04070d] text-slate-200">
       <main className="relative overflow-hidden">
         <div
-          className="pointer-events-none fixed inset-0 z-20 bg-[#020306]"
+          className="pointer-events-none fixed inset-0 z-20"
           style={{
+            background: lightsOn
+              ? `radial-gradient(circle ${Math.max(20, 18 + (mouse.x / 100) * 18)}rem at ${mouse.x}% ${mouse.y}%, rgba(255,248,220,0.45) 0%, rgba(255,248,220,0.24) 18%, rgba(255,248,220,0.10) 36%, rgba(255,248,220,0.03) 54%, transparent 72%)`
+              : `radial-gradient(circle ${Math.max(12, 10 + (mouse.x / 100) * 10)}rem at ${mouse.x}% ${mouse.y}%, rgba(255,248,220,0.26) 0%, rgba(255,248,220,0.14) 16%, rgba(255,248,220,0.05) 34%, transparent 60%)`,
             WebkitMaskImage: siteMask,
             maskImage: siteMask,
             WebkitMaskRepeat: "no-repeat",
             maskRepeat: "no-repeat",
             WebkitMaskSize: "100% 100%",
             maskSize: "100% 100%",
-            opacity: lightsOn ? 0.72 : 0.98,
+            mixBlendMode: "screen",
+            opacity: lightsOn ? 0.78 : 0.92,
           }}
         />
 
@@ -235,8 +239,9 @@ export default function PortfolioExperience() {
             className="pointer-events-none absolute inset-0 z-[21] transition-opacity duration-700"
             style={{
               background: lightsOn
-                ? `radial-gradient(circle 22rem at ${mouse.x}% ${mouse.y}%, rgba(255,247,214,0.10), transparent 52%)`
-                : `radial-gradient(circle 7rem at ${mouse.x}% ${mouse.y}%, rgba(255,247,214,0.16), transparent 68%)`,
+                ? `radial-gradient(circle 24rem at ${mouse.x}% ${mouse.y}%, rgba(255,255,255,0.14), rgba(255,248,220,0.10) 18%, rgba(255,248,220,0.04) 40%, transparent 72%)`
+                : `radial-gradient(circle 8rem at ${mouse.x}% ${mouse.y}%, rgba(255,255,255,0.16), rgba(255,248,220,0.10) 16%, rgba(255,248,220,0.03) 34%, transparent 64%)`,
+              filter: "blur(2px)",
             }}
           />
 
