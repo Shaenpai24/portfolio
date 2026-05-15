@@ -2,6 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import gsap from "gsap";
@@ -61,6 +62,8 @@ function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) 
 export default function PortfolioExperience() {
   const rootRef = useRef<HTMLDivElement>(null);
   const [mouse, setMouse] = useState({ x: 50, y: 50 });
+  const [lightsOn, setLightsOn] = useState(false);
+  const [ropePull, setRopePull] = useState(0);
 
   useEffect(() => {
     const onPointerMove = (event: PointerEvent) => {
@@ -202,18 +205,30 @@ export default function PortfolioExperience() {
         <div
           className="pointer-events-none fixed inset-0 z-20 opacity-40"
           style={{
-            background: `radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(113,240,201,0.17), transparent 28%)`,
+            background: lightsOn
+              ? `radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(113,240,201,0.12), transparent 30%)`
+              : `radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(113,240,201,0.18), transparent 24%)`,
           }}
         />
 
         <section className="relative isolate flex min-h-screen items-center border-b border-white/10 px-6 pt-20 pb-24 md:px-14 lg:px-20">
           <div className="pointer-events-none absolute inset-0 opacity-95">
-            <HeroBackgroundScene />
+            <HeroBackgroundScene lightsOn={lightsOn} />
           </div>
           <div
             className="pointer-events-none absolute inset-0"
             style={{
-              background: `radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(140,223,255,0.17), transparent 34%), radial-gradient(circle at 78% 70%, rgba(88,233,193,0.12), transparent 36%), linear-gradient(to bottom, rgba(4,7,13,0.4), rgba(4,7,13,0.93))`,
+              background: lightsOn
+                ? `radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(140,223,255,0.15), transparent 38%), radial-gradient(circle at 78% 70%, rgba(88,233,193,0.14), transparent 38%), linear-gradient(to bottom, rgba(4,7,13,0.22), rgba(4,7,13,0.74))`
+                : `radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(140,223,255,0.22), transparent 20%), radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(140,223,255,0.08), transparent 34%), radial-gradient(circle at 78% 70%, rgba(88,233,193,0.08), transparent 38%), linear-gradient(to bottom, rgba(4,7,13,0.48), rgba(4,7,13,0.96))`,
+            }}
+          />
+          <div
+            className="pointer-events-none absolute inset-0 z-[21] transition-opacity duration-700"
+            style={{
+              background: lightsOn
+                ? `radial-gradient(circle 32rem at ${mouse.x}% ${mouse.y}%, rgba(255,247,214,0.14), transparent 42%)`
+                : `radial-gradient(circle 16rem at ${mouse.x}% ${mouse.y}%, rgba(255,247,214,0.2), transparent 55%)`,
             }}
           />
 
@@ -239,9 +254,46 @@ export default function PortfolioExperience() {
             </motion.h1>
             <p className="mt-5 max-w-2xl text-sm uppercase tracking-[0.2em] text-cyan-100/65">{profile.heroEyebrow}</p>
 
-            <div className="mt-16 inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-5 py-2 text-xs uppercase tracking-[0.18em] text-cyan-100/85 backdrop-blur">
-              Scroll to enter the lab
-              <span className="animate-bounce text-base">v</span>
+            <div className="mt-12 flex flex-wrap items-center gap-3">
+              <div className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-5 py-2 text-xs uppercase tracking-[0.18em] text-cyan-100/85 backdrop-blur">
+                Scroll to enter the lab
+                <span className="animate-bounce text-base">v</span>
+              </div>
+              <div className="rounded-full border border-amber-100/15 bg-amber-100/5 px-4 py-2 text-[10px] uppercase tracking-[0.28em] text-amber-50/75">
+                Flashlight cursor active
+              </div>
+            </div>
+          </div>
+
+          <div className="absolute right-4 top-16 z-10 hidden lg:block">
+            <div className="relative flex h-[34rem] w-[9rem] flex-col items-center justify-start">
+              <Image
+                src="/rope.svg"
+                alt="Rope switch"
+                width={218}
+                height={2468}
+                priority={false}
+                className="pointer-events-none h-full w-auto select-none opacity-55 drop-shadow-[0_0_26px_rgba(255,225,170,0.18)]"
+              />
+              <motion.button
+                type="button"
+                drag="y"
+                dragElastic={0.12}
+                dragConstraints={{ top: 0, bottom: 112 }}
+                onDrag={(_, info) => setRopePull(Math.max(0, Math.min(info.offset.y / 112, 1)))}
+                onDragEnd={(_, info) => {
+                  if (info.offset.y > 72) setLightsOn(true);
+                  setRopePull(0);
+                }}
+                animate={{ y: lightsOn ? 104 : ropePull * 96 }}
+                transition={{ type: "spring", stiffness: 260, damping: 24 }}
+                className="absolute bottom-2 flex h-16 w-16 items-center justify-center rounded-full border border-amber-100/25 bg-[#120d08]/75 text-[10px] uppercase tracking-[0.28em] text-amber-50 shadow-[0_0_40px_rgba(255,214,144,0.18)] backdrop-blur"
+              >
+                pull
+              </motion.button>
+              <p className="mt-4 max-w-[8rem] text-center text-[10px] uppercase tracking-[0.2em] text-amber-50/55">
+                Pull the switch to bring the room up gradually
+              </p>
             </div>
           </div>
         </section>
@@ -281,12 +333,16 @@ export default function PortfolioExperience() {
 
         <section id="projects" className="relative border-b border-white/10 px-6 py-24 md:px-14 lg:px-20">
           <div className="mx-auto max-w-6xl">
-            <div className="projects-sticky-title bg-[#04070d]/75 backdrop-blur-sm lg:sticky lg:top-2 lg:z-10 lg:pb-8">
-              <SectionHeading eyebrow="Featured Projects" title={profile.sectionCopy.projectsTitle} />
-            </div>
+            <div className="mb-10 grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-start">
+              <div className="projects-sticky-title rounded-3xl border border-white/12 bg-white/[0.03] p-6 lg:sticky lg:top-6">
+                <SectionHeading eyebrow="Featured Projects" title={profile.sectionCopy.projectsTitle} />
+                <p className="max-w-md text-sm leading-relaxed text-slate-300">
+                  The project section now reads as a clean sequence instead of a pinned poster, so each build gets its own stage as you scroll.
+                </p>
+              </div>
 
-            <div className="space-y-10">
-              {projects.map((project, index) => {
+              <div className="space-y-10">
+                  {projects.map((project, index) => {
                 const demoHref = project.demo ?? project.github;
                 const demoLabel = project.demo ? "Live Demo" : "Prototype";
 
@@ -362,6 +418,7 @@ export default function PortfolioExperience() {
                   </motion.article>
                 );
               })}
+              </div>
             </div>
           </div>
         </section>

@@ -60,13 +60,14 @@ const FieldMaterial = shaderMaterial(
   `,
 );
 
-function FieldPlane() {
+function FieldPlane({ lightsOn }: { lightsOn: boolean }) {
   const material = useRef<THREE.ShaderMaterial>(null);
   const shader = useMemo(() => new FieldMaterial(), []);
 
   useFrame((state, delta) => {
     if (!material.current) return;
     material.current.uniforms.uTime.value += delta;
+    material.current.opacity = lightsOn ? 0.88 : 0.66;
     material.current.uniforms.uMouse.value.lerp(
       new THREE.Vector2(state.pointer.x * 0.5 + 0.5, state.pointer.y * 0.5 + 0.5),
       0.08,
@@ -175,7 +176,7 @@ function CameraRig() {
   return null;
 }
 
-export default function HeroBackgroundScene() {
+export default function HeroBackgroundScene({ lightsOn }: { lightsOn: boolean }) {
   return (
     <Canvas
       camera={{ position: [0, 0, 9.5], fov: 45 }}
@@ -183,12 +184,12 @@ export default function HeroBackgroundScene() {
       gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
       className="h-full w-full"
     >
-      <color attach="background" args={["#04070d"]} />
-      <fog attach="fog" args={["#04070d", 10, 28]} />
-      <ambientLight intensity={0.36} />
-      <directionalLight position={[6, 7, 3]} intensity={0.8} color="#81dfff" />
-      <directionalLight position={[-6, -5, -3]} intensity={0.35} color="#71f0cc" />
-      <FieldPlane />
+      <color attach="background" args={[lightsOn ? "#050814" : "#03050a"]} />
+      <fog attach="fog" args={[lightsOn ? "#050814" : "#03050a", lightsOn ? 12 : 9, lightsOn ? 30 : 24]} />
+      <ambientLight intensity={lightsOn ? 0.34 : 0.08} />
+      <directionalLight position={[6, 7, 3]} intensity={lightsOn ? 0.9 : 0.18} color="#81dfff" />
+      <directionalLight position={[-6, -5, -3]} intensity={lightsOn ? 0.52 : 0.08} color="#71f0cc" />
+      <FieldPlane lightsOn={lightsOn} />
       <NeuralField />
       <Trajectories />
       <CameraRig />
