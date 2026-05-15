@@ -200,18 +200,22 @@ export default function PortfolioExperience() {
   }, []);
 
   const siteMask = lightsOn
-    ? `radial-gradient(circle ${Math.max(24, 20 + (mouse.x / 100) * 16)}rem at ${mouse.x}% ${mouse.y}%, rgba(255,255,255,1) 0%, rgba(255,255,255,0.98) 32%, rgba(255,255,255,0.62) 58%, rgba(255,255,255,0.18) 78%, rgba(255,255,255,0) 100%)`
-    : `radial-gradient(circle ${Math.max(12, 10 + (mouse.x / 100) * 10)}rem at ${mouse.x}% ${mouse.y}%, rgba(255,255,255,1) 0%, rgba(255,255,255,0.82) 18%, rgba(255,255,255,0.22) 40%, rgba(255,255,255,0) 64%)`;
+    ? `radial-gradient(circle ${Math.max(28, 22 + (mouse.x / 100) * 18)}rem at ${mouse.x}% ${mouse.y}%, rgba(255,255,255,1) 0%, rgba(255,255,255,0.98) 30%, rgba(255,255,255,0.58) 56%, rgba(255,255,255,0.14) 78%, rgba(255,255,255,0) 100%)`
+    : `radial-gradient(circle ${Math.max(8, 6 + (mouse.x / 100) * 6)}rem at ${mouse.x}% ${mouse.y}%, rgba(255,255,255,1) 0%, rgba(255,255,255,0.9) 16%, rgba(255,255,255,0.28) 34%, rgba(255,255,255,0) 58%)`;
 
   return (
     <div ref={rootRef} className="bg-[#04070d] text-slate-200">
       <main className="relative overflow-hidden">
         <div
-          className="pointer-events-none fixed inset-0 z-20"
+          className="pointer-events-none fixed inset-0 z-20 bg-[#020306]"
           style={{
-            background: lightsOn
-              ? `radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(113,240,201,0.10), transparent 26%)`
-              : `radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(113,240,201,0.12), transparent 16%)`,
+            WebkitMaskImage: siteMask,
+            maskImage: siteMask,
+            WebkitMaskRepeat: "no-repeat",
+            maskRepeat: "no-repeat",
+            WebkitMaskSize: "100% 100%",
+            maskSize: "100% 100%",
+            opacity: lightsOn ? 0.72 : 0.98,
           }}
         />
 
@@ -223,16 +227,16 @@ export default function PortfolioExperience() {
             className="pointer-events-none absolute inset-0"
             style={{
               background: lightsOn
-                ? `radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(140,223,255,0.13), transparent 34%), radial-gradient(circle at 78% 70%, rgba(88,233,193,0.10), transparent 36%), linear-gradient(to bottom, rgba(4,7,13,0.30), rgba(4,7,13,0.82))`
-                : `radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(140,223,255,0.16), transparent 14%), radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(140,223,255,0.07), transparent 22%), radial-gradient(circle at 78% 70%, rgba(88,233,193,0.05), transparent 34%), linear-gradient(to bottom, rgba(1,2,5,0.82), rgba(1,2,5,0.98))`,
+                ? `radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(140,223,255,0.10), transparent 32%), radial-gradient(circle at 78% 70%, rgba(88,233,193,0.08), transparent 34%), linear-gradient(to bottom, rgba(4,7,13,0.28), rgba(4,7,13,0.86))`
+                : `radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(140,223,255,0.11), transparent 10%), radial-gradient(circle at ${mouse.x}% ${mouse.y}%, rgba(140,223,255,0.04), transparent 16%), radial-gradient(circle at 78% 70%, rgba(88,233,193,0.03), transparent 30%), linear-gradient(to bottom, rgba(1,2,5,0.92), rgba(1,2,5,0.995))`,
             }}
           />
           <div
             className="pointer-events-none absolute inset-0 z-[21] transition-opacity duration-700"
             style={{
               background: lightsOn
-                ? `radial-gradient(circle 28rem at ${mouse.x}% ${mouse.y}%, rgba(255,247,214,0.12), transparent 44%)`
-                : `radial-gradient(circle 10rem at ${mouse.x}% ${mouse.y}%, rgba(255,247,214,0.18), transparent 58%)`,
+                ? `radial-gradient(circle 22rem at ${mouse.x}% ${mouse.y}%, rgba(255,247,214,0.10), transparent 52%)`
+                : `radial-gradient(circle 7rem at ${mouse.x}% ${mouse.y}%, rgba(255,247,214,0.16), transparent 68%)`,
             }}
           />
 
@@ -279,7 +283,7 @@ export default function PortfolioExperience() {
 
             <div className="absolute right-4 top-0 z-30 hidden lg:block">
               <motion.div
-                className="relative flex h-[100vh] min-h-[52rem] w-[6.25rem] flex-col items-center justify-start pt-0"
+                className="relative flex h-[112vh] min-h-[56rem] w-[6rem] touch-none cursor-grab flex-col items-center justify-start overflow-hidden pt-0 active:cursor-grabbing"
                 drag="y"
                 dragElastic={0.08}
                 dragConstraints={{ top: 0, bottom: 116 }}
@@ -297,9 +301,10 @@ export default function PortfolioExperience() {
                   width={218}
                   height={2468}
                   priority={false}
-                  className="pointer-events-none h-full w-auto select-none object-contain object-top opacity-60 drop-shadow-[0_0_26px_rgba(255,225,170,0.14)]"
+                  className="pointer-events-none absolute inset-x-0 top-0 h-full w-full select-none object-contain object-top opacity-60 drop-shadow-[0_0_26px_rgba(255,225,170,0.14)]"
                 />
                 <div className="absolute bottom-2 h-16 w-16 rounded-full border border-amber-100/25 bg-[#120d08]/75 shadow-[0_0_40px_rgba(255,214,144,0.18)] backdrop-blur" />
+                <div className="absolute top-0 h-3 w-3 rounded-full bg-amber-100/30 shadow-[0_0_18px_rgba(255,225,170,0.28)]" />
               </motion.div>
             </div>
           </div>
