@@ -2,7 +2,6 @@
 
 import { motion, useInView } from "framer-motion";
 import dynamic from "next/dynamic";
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import gsap from "gsap";
@@ -300,16 +299,12 @@ export default function PortfolioExperience() {
                 animate={{ y: lightsOn ? 118 : ropePull * 108 }}
                 transition={{ type: "spring", stiffness: 260, damping: 24 }}
               >
-                <Image
-                  src="/rope.svg"
-                  alt="Rope switch"
-                  width={218}
-                  height={2468}
-                  priority={false}
-                  className="pointer-events-none absolute inset-x-0 top-0 h-full w-full select-none object-contain object-top opacity-60 drop-shadow-[0_0_26px_rgba(255,225,170,0.14)]"
-                />
-                <div className="absolute bottom-2 h-16 w-16 rounded-full border border-amber-100/25 bg-[#120d08]/75 shadow-[0_0_40px_rgba(255,214,144,0.18)] backdrop-blur" />
-                <div className="absolute top-0 h-3 w-3 rounded-full bg-amber-100/30 shadow-[0_0_18px_rgba(255,225,170,0.28)]" />
+                {/* CSS/HTML rope visuals (no external SVG) - tall thin strand + handle */}
+                <div className="absolute inset-x-0 top-0 h-full w-full select-none pointer-events-none">
+                  <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[4px] h-full bg-gradient-to-b from-amber-400/40 via-amber-300/10 to-transparent opacity-70" />
+                  <div className="absolute bottom-8 left-1/2 -translate-x-1/2 h-12 w-12 rounded-full border border-amber-100/25 bg-[#120d08]/75 shadow-[0_0_40px_rgba(255,214,144,0.18)]" />
+                  <div className="absolute top-6 left-1/2 -translate-x-1/2 h-3 w-3 rounded-full bg-amber-100/30 shadow-[0_0_18px_rgba(255,225,170,0.28)]" />
+                </div>
               </motion.div>
             </div>
           </div>
