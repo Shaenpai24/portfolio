@@ -199,9 +199,9 @@ export default function PortfolioExperience() {
     });
   }, []);
 
-  const heroMask = lightsOn
-    ? `radial-gradient(circle ${Math.max(18, 16 + (mouse.x / 100) * 12)}rem at ${mouse.x}% ${mouse.y}%, rgba(255,255,255,1) 0%, rgba(255,255,255,0.95) 26%, rgba(255,255,255,0.28) 54%, rgba(255,255,255,0) 76%)`
-    : `radial-gradient(circle ${Math.max(10, 9 + (mouse.x / 100) * 8)}rem at ${mouse.x}% ${mouse.y}%, rgba(255,255,255,1) 0%, rgba(255,255,255,0.78) 20%, rgba(255,255,255,0.16) 44%, rgba(255,255,255,0) 68%)`;
+  const siteMask = lightsOn
+    ? `radial-gradient(circle ${Math.max(24, 20 + (mouse.x / 100) * 16)}rem at ${mouse.x}% ${mouse.y}%, rgba(255,255,255,1) 0%, rgba(255,255,255,0.98) 32%, rgba(255,255,255,0.62) 58%, rgba(255,255,255,0.18) 78%, rgba(255,255,255,0) 100%)`
+    : `radial-gradient(circle ${Math.max(12, 10 + (mouse.x / 100) * 10)}rem at ${mouse.x}% ${mouse.y}%, rgba(255,255,255,1) 0%, rgba(255,255,255,0.82) 18%, rgba(255,255,255,0.22) 40%, rgba(255,255,255,0) 64%)`;
 
   return (
     <div ref={rootRef} className="bg-[#04070d] text-slate-200">
@@ -237,74 +237,70 @@ export default function PortfolioExperience() {
           />
 
           <div
-            className="parallax-layer relative z-10 mx-auto w-full max-w-7xl"
-            data-depth="0.08"
+            className="relative z-10"
             style={{
-              WebkitMaskImage: heroMask,
-              maskImage: heroMask,
+              WebkitMaskImage: siteMask,
+              maskImage: siteMask,
               WebkitMaskRepeat: "no-repeat",
               maskRepeat: "no-repeat",
               WebkitMaskSize: "100% 100%",
               maskSize: "100% 100%",
-              opacity: lightsOn ? 1 : 0.88,
             }}
           >
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.12 }}
-              className="mb-6 text-sm uppercase tracking-[0.3em] text-cyan-100/70"
-            >
-              {profile.subtitle}
-            </motion.p>
-            <motion.h1
-              initial={{ opacity: 0, y: 34 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.15, ease: [0.16, 1, 0.3, 1] }}
-              className="text-pretty text-5xl font-semibold leading-[0.92] text-white sm:text-6xl md:max-w-5xl md:text-8xl"
-            >
-              {profile.name}
-              <span className="mt-4 block text-balance text-xl font-medium leading-snug text-slate-200/88 md:mt-8 md:text-4xl">
-                {profile.heroTitle}
-              </span>
-            </motion.h1>
-            <p className="mt-5 max-w-2xl text-sm uppercase tracking-[0.2em] text-cyan-100/65">{profile.heroEyebrow}</p>
+            <div className="parallax-layer relative z-10 mx-auto w-full max-w-7xl" data-depth="0.08">
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.12 }}
+                className="mb-6 text-sm uppercase tracking-[0.3em] text-cyan-100/70"
+              >
+                {profile.subtitle}
+              </motion.p>
+              <motion.h1
+                initial={{ opacity: 0, y: 34 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1.15, ease: [0.16, 1, 0.3, 1] }}
+                className="text-pretty text-5xl font-semibold leading-[0.92] text-white sm:text-6xl md:max-w-5xl md:text-8xl"
+              >
+                {profile.name}
+                <span className="mt-4 block text-balance text-xl font-medium leading-snug text-slate-200/88 md:mt-8 md:text-4xl">
+                  {profile.heroTitle}
+                </span>
+              </motion.h1>
+              <p className="mt-5 max-w-2xl text-sm uppercase tracking-[0.2em] text-cyan-100/65">{profile.heroEyebrow}</p>
 
-            <div className="mt-12 flex flex-wrap items-center gap-3">
-              <div className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-5 py-2 text-xs uppercase tracking-[0.18em] text-cyan-100/85 backdrop-blur">
-                Scroll to enter the lab
-                <span className="animate-bounce text-base">v</span>
+              <div className="mt-12 flex flex-wrap items-center gap-3">
+                <div className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-5 py-2 text-xs uppercase tracking-[0.18em] text-cyan-100/85 backdrop-blur">
+                  Scroll to enter the lab
+                  <span className="animate-bounce text-base">v</span>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="absolute right-4 top-16 z-10 hidden lg:block">
-            <div className="relative flex h-[88vh] min-h-[42rem] w-[7rem] flex-col items-center justify-start">
-              <Image
-                src="/rope.svg"
-                alt="Rope switch"
-                width={218}
-                height={2468}
-                priority={false}
-                className="pointer-events-none h-full w-auto select-none opacity-60 drop-shadow-[0_0_26px_rgba(255,225,170,0.14)]"
-              />
-              <motion.button
-                type="button"
+            <div className="absolute right-4 top-0 z-30 hidden lg:block">
+              <motion.div
+                className="relative flex h-[100vh] min-h-[52rem] w-[6.25rem] flex-col items-center justify-start pt-0"
                 drag="y"
-                dragElastic={0.12}
-                dragConstraints={{ top: 0, bottom: 112 }}
-                onDrag={(_, info) => setRopePull(Math.max(0, Math.min(info.offset.y / 112, 1)))}
+                dragElastic={0.08}
+                dragConstraints={{ top: 0, bottom: 116 }}
+                onDrag={(_, info) => setRopePull(Math.max(0, Math.min(info.offset.y / 116, 1)))}
                 onDragEnd={(_, info) => {
-                  if (info.offset.y > 72) setLightsOn(true);
+                  if (info.offset.y > 70) setLightsOn(true);
                   setRopePull(0);
                 }}
-                animate={{ y: lightsOn ? 130 : ropePull * 96 }}
+                animate={{ y: lightsOn ? 118 : ropePull * 108 }}
                 transition={{ type: "spring", stiffness: 260, damping: 24 }}
-                aria-label="Pull the switch to turn on the lights"
-                className="absolute bottom-2 h-16 w-16 rounded-full border border-amber-100/25 bg-[#120d08]/75 shadow-[0_0_40px_rgba(255,214,144,0.18)] backdrop-blur"
               >
-                <span className="sr-only">Pull the switch to turn on the lights</span>
-              </motion.button>
+                <Image
+                  src="/rope.svg"
+                  alt="Rope switch"
+                  width={218}
+                  height={2468}
+                  priority={false}
+                  className="pointer-events-none h-full w-auto select-none object-contain object-top opacity-60 drop-shadow-[0_0_26px_rgba(255,225,170,0.14)]"
+                />
+                <div className="absolute bottom-2 h-16 w-16 rounded-full border border-amber-100/25 bg-[#120d08]/75 shadow-[0_0_40px_rgba(255,214,144,0.18)] backdrop-blur" />
+              </motion.div>
             </div>
           </div>
         </section>
